@@ -20,12 +20,21 @@ def create_accBarber():
 
 def delete_accBarber():
     barberuser = input("Enter the username of the barber to delete: ").strip()
-    
-    if barberuser in barberaccount:
-        del barberaccount[barberuser]
-        print(f"Barber {barberuser} deleted successfully!")
-    else:
+    if barberuser not in barberaccount:
         print("Barber not found.")
+        return
+        
+    yes = input("Are you sure to delete this account?\nYES or NO:").strip().lower()
+    if yes == 'yes':
+        if barberuser in barberaccount:
+            del barberaccount[barberuser]
+            print(f"Barber {barberuser} deleted successfully!")
+        else:
+            print("Barber not found.")
+    elif yes == 'no':
+        print("no activity")
+    else:
+        print("invalid")
 
 def manbar():  
     while True:
